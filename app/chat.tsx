@@ -1,6 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView, Text, View, FlatList } from 'react-native';
+import {
+	SafeAreaView,
+	Text,
+	View,
+	FlatList,
+	TouchableOpacity,
+} from 'react-native';
 import Layout from '../components/Layout/Layout';
 import Header from '../components/Header/Header';
 import { ChatAuthorType, FormType, HeaderType } from '../types/types';
@@ -11,6 +17,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import Form from '../components/Form/Form';
 import ChatIcon from '../components/icons/Chat';
 import Message from '../components/Message/Message';
+import ArrowBackIcon from '../components/icons/ArrowBack';
 
 interface Props extends PropsFromRedux {}
 
@@ -24,12 +31,15 @@ const Chat: React.FC<Props> = ({ actualChat, allChats }) => {
 				<Layout>
 					<View className="flex-1">
 						<Header title="Chat" type={HeaderType.chat} />
-						<Text
+						{/* <Text
 							className="text-3xl text-lightBlue"
 							onPress={() => router.push('/')}
 						>
 							Go back
-						</Text>
+						</Text> */}
+						<TouchableOpacity onPress={() => router.push('/')}>
+							<ArrowBackIcon width={24} height={24} />
+						</TouchableOpacity>
 						<FlatList
 							inverted // bottom scroll
 							contentContainerStyle={{ flexDirection: 'column-reverse' }} // bottom scroll
